@@ -50,7 +50,7 @@ def install_library(library_name):
 def main():
     # Specify Python version and libraries to install
     python_version = "3.12.8"
-    libraries = ["numpy", "pandas", "PyQt5", "openpyxl", "sqlalchemy", "PyAthena"]
+    libraries = ["numpy", "pandas", "PyQt5", "openpyxl", "sqlalchemy", "PyAthena", "pyarrow","fastparquet"]
 
     # Step 1: Download Python installer
     installer_path = download_python_installer(version=python_version)
