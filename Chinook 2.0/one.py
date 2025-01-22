@@ -167,26 +167,26 @@ def copy_and_paste_excel(file_list, headings, output_sheet_name, output_file, fo
 
 # Specify the file list in the predefined sequence
 file_list = [
+    "athena_query_results_dtc_with_count.xlsx",
+    "athena_query_results_error_no_duplicates.xlsx",
+    "FMI-CID.xlsx",
     "J1939_non_duplicates.xlsx",
     "J1939_out_of_bounds.xlsx",
     "CDL_non_duplicates_file.xlsx",
     "CDL_out_of_bounds.xlsx",
-    "athena_query_results_dtc_with_count.xlsx",
-    "athena_query_results_error_no_duplicates.xlsx",
-    "FMI-CID.xlsx",
     "merged_combined_statistics_ordered_CDL.xlsx",
     "merged_combined_statistics_ordered_J1939.xlsx",
 ]
 
 # Define custom headings for each file
 headings = [
+    "DTC",
+    "Error",
+    "FMI-CID",
     "J1939 Stuck Tags",
     "J1939 Out of Range Tags",
     "CDL Stuck Tags",
     "CDL Out of Range Tags",
-    "DTC",
-    "Error",
-    "FMI-CID",
     "Combined CDL Statistics",
     "Combined J1939 Statistics",
 ]
