@@ -118,7 +118,7 @@ def filter_and_save(df, filter_condition, output_filename, exclude_columns=None)
 # Define filters for processing
 filters = {
     'athena_query_results_dtc_with_count.xlsx': {'include': ['DTC'], 'exclude': None},
-    'athena_query_results_fmi.xlsx': {'include': ['CDLECM'], 'exclude': None},
+    'athena_query_results_fmi.xlsx': {'include': ['CDLECMFaultLogCodesAndStatusChassis'], 'exclude': None},
     'athena_query_results_error_no_duplicates.xlsx': {'include': ['error'], 'exclude': None},
     'athena_query_results_j1939_no_error_dtc_rpm_with_count.xlsx': {'include': ['J1939'], 'exclude': ['error', 'DTC', 'DM1', 'DM2', 'RPM']},
     'athena_query_results_rpm_with_count.xlsx': {'include': ['RPM'], 'exclude': None},
