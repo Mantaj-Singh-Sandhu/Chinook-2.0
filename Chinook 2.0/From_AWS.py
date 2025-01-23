@@ -50,7 +50,7 @@ WHERE
     AND cust_code = '{cust_code}'
     AND year = '{year}'
     AND month = '{month}'
-    AND day = '{day}';
+  AND day = '{day}'
 """
 
 # Function to execute a query for a device and save the results

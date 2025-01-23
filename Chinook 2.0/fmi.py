@@ -30,7 +30,8 @@ try:
                 parsed_data.append({
                     "fmi": entry.get("fmi", None),  # Default to None if key is missing
                     "cid": entry.get("cid", None),
-                    "active": entry.get("active", None)
+                    "active": entry.get("active", None),
+                    "duplicate_count": row.get("duplicate_count", None)
                 })
         except (json.JSONDecodeError, KeyError, TypeError):
             print(f"Skipping row due to error: {row.get('value', None)}")
@@ -47,11 +48,9 @@ try:
         parsed_df['count'] = 1
         if not parsed_df.empty:
             # Update 'count' with actual duplicate counts
-            parsed_df['count'] = parsed_df.groupby(["fmi", "cid", "active"])["fmi"].transform("count")
-        # Ensure duplicate removal but keep the 'count' column
-        parsed_df = parsed_df.drop_duplicates(["fmi", "cid", "active"]).reset_index(drop=True)
+            print("Required columns 'fmi' or 'cid' not are missing. ")
     else:
-        print("Required columns 'fmi' or 'cid' are missing. Exiting.")
+        print("Required columns 'fmi' or 'cid' are missing. ")
 
     # Step 4: Read the FMI Source file
     print("Reading the FMI Source data...")
@@ -82,7 +81,7 @@ try:
     ]
 
     # Step 8: Reorder columns: CID Description first, then FMI Description
-    parsed_df = parsed_df[["CID Description", "FMI Description", "count", "fmi", "cid", "active"]]
+    parsed_df = parsed_df[["CID Description", "FMI Description", "duplicate_count", "fmi", "cid", "active"]]
 
     # Step 9: Save the parsed DataFrame to a new Excel file
     print("Writing output to Excel...")
@@ -116,10 +115,6 @@ try:
     # Save the adjusted file
     wb.save(output_file)
     print(f"Conversion complete! Data saved to {output_file}")
-
-    # Step 11: Remove the input file
-    os.remove(input_file)
-    print(f"Input file '{input_file}' has been removed.")
 
 except Exception as e:
     print(f"An error occurred: {e}")
