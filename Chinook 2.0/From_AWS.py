@@ -50,7 +50,8 @@ WHERE
     AND cust_code = '{cust_code}'
     AND year = '{year}'
     AND month = '{month}'
-  AND day = '{day}'
+AND day = '{day}'
+  
 """
 
 # Function to execute a query for a device and save the results
@@ -60,7 +61,8 @@ def execute_device_query(device_name):
         cust_code=cust_code,
         year=year,
         month=month,
-        day=day
+day=day
+
     )
     try:
         print(f"Executing query for {device_name} on {query_date}...")

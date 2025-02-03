@@ -174,8 +174,8 @@ file_list = [
     "J1939_out_of_bounds.xlsx",
     "CDL_non_duplicates_file.xlsx",
     "CDL_out_of_bounds.xlsx",
-    "merged_combined_statistics_ordered_CDL.xlsx",
-    "merged_combined_statistics_ordered_J1939.xlsx",
+    "combined_statistics_CDL.xlsx",
+    "combined_statistics_J1939.xlsx",
 ]
 
 # Define custom headings for each file
