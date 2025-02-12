@@ -122,7 +122,11 @@ def filter_and_save(df, filter_condition, output_filename, exclude_columns=None)
 filters = {
     'athena_query_results_dtc_CDL_with_count.xlsx': {'include': ['DTC'], 'exclude': None},  # Special case handled separately
     'athena_query_results_dtc_J1939_with_count.xlsx': {'include': ['DTC'], 'exclude': None},  # Special case handled separately
+    'athena_query_results_OoR_CDL_with_count.xlsx': {'include': ['OoR'], 'exclude': None},  # Special case handled separately
+    'athena_query_results_OoR_J1939_with_count.xlsx': {'include': ['OoR'], 'exclude': None},  # Special case handled separately
     'athena_query_results_fmi.xlsx': {'include': ['^CDLECM'], 'exclude': None},
+    'athena_query_results_LAMP.xlsx': {'include': ['LAMP'], 'exclude': None},
+    'athena_query_results_CDLWarning.xlsx': {'include': ['^CDLWarning'], 'exclude': None},
     'athena_query_results_DM1_DM2_no_duplicates.xlsx': {'include': ['DM1','DM2'], 'exclude': None},
     'athena_query_results_error_no_duplicates.xlsx': {'include': ['error'], 'exclude': None},
     'athena_query_results_j1939_no_error_dtc_rpm_with_count.xlsx': {'include': ['J1939'], 'exclude': ['error', 'DTC', 'DM1', 'DM2', 'RPM']},
@@ -142,8 +146,18 @@ for filename, conditions in filters.items():
         # Ensure 'name' starts with "CDLECM"
         filter_condition = df['name'].str.startswith("CDLECM", na=False)
 
+    elif filename == "athena_query_results_CDLWarning.xlsx":
+        # Ensure 'name' starts with "CDLECM"
+        filter_condition = df['name'].str.startswith("CDLWarning", na=False)
+
     elif filename == "athena_query_results_dtc_J1939_with_count.xlsx":
         filter_condition = df['name'].str.startswith('J1939', na=False) & df['name'].str.endswith('DTC', na=False)
+
+    elif filename == "athena_query_results_OoR_CDL_with_count.xlsx":
+        filter_condition = df['name'].str.startswith('CDL', na=False) & df['name'].str.endswith('OoR', na=False)
+
+    elif filename == "athena_query_results_OoR_J1939_with_count.xlsx":
+        filter_condition = df['name'].str.startswith('J1939', na=False) & df['name'].str.endswith('OoR', na=False)       
 
     else:
         filter_condition = df['name'].str.contains('|'.join(map(re.escape, include)), case=False, na=False)

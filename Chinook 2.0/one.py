@@ -142,7 +142,9 @@ def copy_and_paste_excel(file_list, headings, output_sheet_name, output_file, fo
         # Set background color based on index (first 7 with red, remaining with light blue)
         if index == 1:
             heading_cell.fill = blue_fill
-        elif 2 <= index <= 8:
+        elif 2 <= index <= 5:
+            heading_cell.fill = red_fill
+        elif 8 <= index <= 12:
             heading_cell.fill = red_fill
         else:
             heading_cell.fill = light_blue_fill
@@ -172,11 +174,15 @@ file_list = [
     "Heading.xlsx",
     "athena_query_results_dtc_CDL_with_count.xlsx",
     "FMI-CID.xlsx",
+    "athena_query_results_CDLWarning.xlsx",
+    "athena_query_results_OoR_CDL_with_count.xlsx",
     "merged_combined_statistics_ordered_CDL.xlsx",
     "combined_statistics_CDL.xlsx",
     "athena_query_results_dtc_J1939_with_count.xlsx",
     "athena_query_results_error_no_duplicates.xlsx",
     "athena_query_results_DM1_DM2_no_duplicates.xlsx",
+    "athena_query_results_LAMP.xlsx",
+    "athena_query_results_OoR_J1939_with_count.xlsx",
     "merged_combined_statistics_ordered_J1939.xlsx",
     "combined_statistics_J1939.xlsx",
 ]
@@ -186,11 +192,15 @@ headings = [
     "SYMX-AI",
     "DTC-CDL",
     "CDL-Fault-Codes",
+    "CDLWarning",
+    "CDL-Out-of-Range",
     "Priority CDL Tags",
     "Combined CDL Statistics",
     "DTC-J1939",
     "Error",
     "DM1-DM2",
+    "LAMP",
+    "J1939-Out-of-Range",
     "Priority J1939 Tags",
     "Combined J1939 Statistics",
 ]
