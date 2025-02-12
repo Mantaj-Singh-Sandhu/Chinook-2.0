@@ -41,7 +41,7 @@ class ScriptRunnerApp(QWidget):
             "BUZ": 9,
             "DRN": 16,
             "TPA": 2,
-            "SQA": 5,
+            "SQA": 1,
         }
 
         row = 0
@@ -98,6 +98,7 @@ class ScriptRunnerApp(QWidget):
         self.first_script = "From_AWS.py"
         self.remaining_scripts = [
             "chinook.py",
+            "Heading.py",
             "fmi.py",
             "j1939_stage1.py",
             "j1939_stage2.py",

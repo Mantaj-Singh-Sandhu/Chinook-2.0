@@ -61,7 +61,7 @@ def execute_device_query(device_name):
         cust_code=cust_code,
         year=year,
         month=month,
-day=day
+        day=day
 
     )
     try:

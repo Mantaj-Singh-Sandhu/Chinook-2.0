@@ -10,7 +10,7 @@ fmi_source_file = "FMISource.xlsx"  # FMI source file in the same folder as the 
 output_file = "excel_outputs/FMI-CID.xlsx"  # Output file path
 
 # Ensure the output file is created (even if no data to write)
-empty_df = pd.DataFrame(columns=["CID Description", "FMI Description", "count", "fmi", "cid", "active"])
+empty_df = pd.DataFrame(columns=["CID Description", "FMI Description", "count", "fmi", "cid", "active", "name"])
 empty_df.to_excel(output_file, index=False)
 
 try:
@@ -31,7 +31,8 @@ try:
                     "fmi": entry.get("fmi", None),  # Default to None if key is missing
                     "cid": entry.get("cid", None),
                     "active": entry.get("active", None),
-                    "duplicate_count": row.get("duplicate_count", None)
+                    "duplicate_count": row.get("duplicate_count", None),
+                    "name": row.get("name", None)
                 })
         except (json.JSONDecodeError, KeyError, TypeError):
             print(f"Skipping row due to error: {row.get('value', None)}")
@@ -81,7 +82,7 @@ try:
     ]
 
     # Step 8: Reorder columns: CID Description first, then FMI Description
-    parsed_df = parsed_df[["CID Description", "FMI Description", "duplicate_count", "fmi", "cid", "active"]]
+    parsed_df = parsed_df[["CID Description", "FMI Description", "duplicate_count", "fmi", "cid", "active", "name"]]
 
     # Step 9: Save the parsed DataFrame to a new Excel file
     print("Writing output to Excel...")
@@ -99,7 +100,8 @@ try:
         'C': 10,  # count column
         'D': 10,  # fmi column
         'E': 10,  # cid column
-        'F': 10   # active column
+        'F': 10,  # active column
+        'G': 20,  # name column
     }
 
     # Adjust each column's width

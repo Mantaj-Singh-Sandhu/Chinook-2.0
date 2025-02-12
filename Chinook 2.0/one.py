@@ -75,7 +75,7 @@ def copy_and_paste_excel(file_list, headings, output_sheet_name, output_file, fo
     # Define font styles and fill colors
     bold_font = Font(size=40, bold=True)  # Bold font with increased size
     heading_font = Font(size=16, bold=True)  # Bold font for headings
-    blue_fill = PatternFill(start_color="0000FF", end_color="0000FF", fill_type="solid")  # Blue
+    blue_fill = PatternFill(start_color="6699FF", end_color="6699FF", fill_type="solid")
     light_blue_fill = PatternFill(start_color="ADD8E6", end_color="ADD8E6", fill_type="solid")  # Light Blue
     red_fill = PatternFill(start_color="FF9999", end_color="FF9999", fill_type="solid")  # Lighter red
     center_alignment = Alignment(horizontal="center", vertical="center")  # Center alignment
@@ -140,7 +140,9 @@ def copy_and_paste_excel(file_list, headings, output_sheet_name, output_file, fo
         heading_cell = dest_sheet.cell(row=dest_start_row, column=1, value=heading)
 
         # Set background color based on index (first 7 with red, remaining with light blue)
-        if index <= 7:
+        if index == 1:
+            heading_cell.fill = blue_fill
+        elif 2 <= index <= 8:
             heading_cell.fill = red_fill
         else:
             heading_cell.fill = light_blue_fill
@@ -167,27 +169,29 @@ def copy_and_paste_excel(file_list, headings, output_sheet_name, output_file, fo
 
 # Specify the file list in the predefined sequence
 file_list = [
-    "athena_query_results_dtc_with_count.xlsx",
-    "athena_query_results_error_no_duplicates.xlsx",
+    "Heading.xlsx",
+    "athena_query_results_dtc_CDL_with_count.xlsx",
     "FMI-CID.xlsx",
-    "J1939_non_duplicates.xlsx",
-    "J1939_out_of_bounds.xlsx",
-    "CDL_non_duplicates_file.xlsx",
-    "CDL_out_of_bounds.xlsx",
+    "merged_combined_statistics_ordered_CDL.xlsx",
     "combined_statistics_CDL.xlsx",
+    "athena_query_results_dtc_J1939_with_count.xlsx",
+    "athena_query_results_error_no_duplicates.xlsx",
+    "athena_query_results_DM1_DM2_no_duplicates.xlsx",
+    "merged_combined_statistics_ordered_J1939.xlsx",
     "combined_statistics_J1939.xlsx",
 ]
 
 # Define custom headings for each file
 headings = [
-    "DTC",
-    "Error",
-    "FMI-CID",
-    "J1939 Stuck Tags",
-    "J1939 Out of Range Tags",
-    "CDL Stuck Tags",
-    "CDL Out of Range Tags",
+    "SYMX-AI",
+    "DTC-CDL",
+    "CDL-Fault-Codes",
+    "Priority CDL Tags",
     "Combined CDL Statistics",
+    "DTC-J1939",
+    "Error",
+    "DM1-DM2",
+    "Priority J1939 Tags",
     "Combined J1939 Statistics",
 ]
 
