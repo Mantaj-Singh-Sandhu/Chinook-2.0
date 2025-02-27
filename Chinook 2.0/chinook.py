@@ -129,9 +129,9 @@ filters = {
     'athena_query_results_CDLWarning.xlsx': {'include': ['^CDLWarning'], 'exclude': None},
     'athena_query_results_DM1_DM2_no_duplicates.xlsx': {'include': ['DM1','DM2'], 'exclude': None},
     'athena_query_results_error_no_duplicates.xlsx': {'include': ['error'], 'exclude': None},
-    'athena_query_results_j1939_no_error_dtc_rpm_with_count.xlsx': {'include': ['J1939'], 'exclude': ['error', 'DTC', 'DM1', 'DM2', 'RPM']},
+    'athena_query_results_j1939_no_error_dtc_rpm_with_count.xlsx': {'include': ['J1939'], 'exclude': ['error', 'DTC', 'DM1', 'DM2']},
     'athena_query_results_rpm_with_count.xlsx': {'include': ['RPM'], 'exclude': None},
-    'athena_query_results_cdl_no_dtc_error_rpm_cdlecm_with_count.xlsx': {'include': ['CDL'], 'exclude': ['DTC', 'error', 'RPM', 'CDLECM*']},
+    'athena_query_results_cdl_no_dtc_error_rpm_cdlecm_with_count.xlsx': {'include': ['CDL'], 'exclude': ['DTC', 'error', 'CDLECM*']},
 }
 
 # Apply filtering and saving for each filter
