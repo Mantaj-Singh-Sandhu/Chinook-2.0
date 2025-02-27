@@ -18,19 +18,16 @@ class ScriptRunnerApp(QWidget):
         self.main_layout = QVBoxLayout()
 
         # Center-aligned message label
-        self.info_label = QLabel("Enter the date, Click the Buttons, and Sit back.")
+        self.info_label = QLabel("Click the Buttons, and Sit back.")
         self.info_label.setAlignment(Qt.AlignCenter)  # Center-align text
         self.info_label.setStyleSheet("font-size: 16px; font-weight: bold;")  # Larger, bold font
         self.main_layout.addWidget(self.info_label)
 
         # Input for the date
         self.date_input = QLineEdit()
-        self.date_input.setPlaceholderText("Enter date (YYYY-MM-DD)")
+        self.date_input.setPlaceholderText("Choose the client That is Already Run by the main QT app")
         self.date_input.setStyleSheet("font-size: 14px;")  # Larger input font
         self.main_layout.addWidget(self.date_input)
-
-        # Set the current date when the app starts
-        self.set_current_date()
 
         # Grid layout for buttons
         self.grid_layout = QGridLayout()
@@ -95,35 +92,13 @@ class ScriptRunnerApp(QWidget):
         self.setLayout(self.main_layout)
 
         # Initialize task-related attributes
-        self.first_script = "From_AWS.py"
+        self.first_script = "Kujbhi.py"
         self.remaining_scripts = [
             "raw.py",
         ]
 
         self.runner_thread = None
         self.selected_repetitions = 1
-
-    def set_current_date(self):
-        """Set the current date in the date input field and save it to date.txt."""
-        current_date = datetime.today().strftime('%Y-%m-%d')
-        self.date_input.setText(current_date)
-        self.update_date_file(current_date)
-
-    def update_date_file(self, date_text):
-        """Write the date to the date.txt file."""
-        try:
-            with open("date.txt", "w") as file:
-                file.write(date_text)
-        except Exception as e:
-            self.info_label.setText(f"Failed to update date: {e}")
-
-    def validate_date(self, date_text):
-        """Validate the entered date is in YYYY-MM-DD format."""
-        try:
-            datetime.strptime(date_text, '%Y-%m-%d')
-            return True
-        except ValueError:
-            return False
 
     def handle_file_action(self, task_name):
         """Handle the selected task and update the date file."""
@@ -189,7 +164,7 @@ class ScriptRunnerApp(QWidget):
     def task_complete(self):
         """Handle the task completion."""
         self.info_label.setText("All tasks completed successfully!")
-        QMessageBox.information(self, "Success", "Report Files are ready in excel_outputs Folder")
+        QMessageBox.information(self, "Success", "Raw text Files are ready in raw Folder")
 
         # Re-enable the UI elements after task completion
         self.toggle_ui(enable=True)
