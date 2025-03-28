@@ -34,9 +34,9 @@ class ScriptRunnerApp(QWidget):
 
         # Buttons for tasks
         self.task_repetitions = {
-            "MOP": 17,
-            "BUZ": 9,
-            "DRN": 16,
+             "MOP": 17,
+            "BUZ": 8,
+            "DRN": 15,
             "TPA": 2,
             "SQA": 1,
         }
